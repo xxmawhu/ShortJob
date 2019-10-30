@@ -40,4 +40,23 @@ cd ..
  root -l -b -q 'cut.cxx(1.1,1.2,0)'>>test/log0001.cut;
  root -l -b -q 'fit.cxx("d<1")'>>test/log0001.fit;
 ```
+## More complex example
+```py
+#!/usr/bin/env python
+import os
+from ShortJob import MkMulJob
 
+# get all files in the current directory
+fileList = os.listdir(".")
+
+# only need those file end with .C
+scriptList = []
+for f in fileList:
+    if f.endswith(".C"):
+        scriptList.append(f)
+
+mk = MkMulJob.MkMulJob(["run.C"])
+for i, f in enumerate(scriptList):
+    input_value = [f[:-2]]
+    mk.Make(i, input_value)
+```
