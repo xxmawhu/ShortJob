@@ -14,6 +14,11 @@ python setup.py install --user
 ## Usage
 You should prepare two root script, i.e. `cut.cxx` and `fit.cxx`, then
 you can make a bash file to run those two script.
+* make a directory, such as jobs, then work at the jobs
+```sh
+mkdir jobs
+cd jobs
+```
 * Write a py file, i.e test.py
 ```py
 #!/usr/bin/env python
