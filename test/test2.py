@@ -14,4 +14,5 @@ for f in fileList:
 mk = MkMulJob.MkMulJob(["run.C"])
 for i, f in enumerate(scriptList):
     input_value = [f[:-2]]
-    mk.Make(i, input_value)
+    print input_value
+    mk.Make(i, [input_value])
