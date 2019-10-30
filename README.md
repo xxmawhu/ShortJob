@@ -9,8 +9,8 @@ python setup.py install --user
 ```
 ## Usage
 You should prepare two root script, i.e. `cut.cxx` and `fit.cxx`, then
-you can make a bash file to run thoes two script.
-* write a py file, i.e test.py
+you can make a bash file to run those two script.
+* Write a py file, i.e test.py
 ```py
 #!/usr/bin/env python
 from ShortJob import MkMulJob
@@ -19,10 +19,13 @@ cut_argv = [1.1, 1.2]
 fit_argv = ["mass < 2.4"]
 mk.Make(1, [cut_argv, fit_argv])
 ```
-Runing test.py
+* Running test.py
 ```sh
 python test.py
-or ./test.py
+```
+or
+```sh
+./test.py
 ```
 
 After running this python file, you will get a bash file named `job_000001.sh`
