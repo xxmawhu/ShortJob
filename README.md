@@ -1,4 +1,8 @@
 # ShortJob
+## Download
+```sh
+git clone https://github.com/xxmawhu/ShortJob.git
+```
 ## Install
 ```sh
 python setup.py install
