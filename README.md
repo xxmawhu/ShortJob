@@ -51,6 +51,7 @@ fileList = os.listdir(".")
 
 # only need those file end with .C
 scriptList = []
+
 for f in fileList:
     if f.endswith(".C"):
         scriptList.append(f)
