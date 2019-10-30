@@ -1,3 +1,16 @@
+#!/usr/bin/env python
+# ====================================================
+#   Copyright (C)2019 All rights reserved.
+#
+#   Author        : Xin-Xin MA
+#   Email         : xxmawhu@163.com
+#   File Name     : MkMulJob.py
+#   Created Time  : 2019-10-30 18:29
+#   Last Modified : 2019-10-30 18:29
+#   Describe      :
+#
+# ====================================================
+
 import os
 class MkMulJob:
     def __init__(self, cppList=["fit.cxx"]):
