@@ -18,9 +18,6 @@ class MkMulJob:
         self._cwd = os.getcwd()
 
     def Make(self, indx, varList=[], logName=[]):
-        if indx>1e6:
-            print "too large"
-            return
         if len(logName) != len( self._cppList) and len(logName)>0:
             print("check the length")
             return 
@@ -28,7 +25,7 @@ class MkMulJob:
             for i in self._cppList:
                 logName.append(i.split('.')[0])
 
-        f=open("job_%06d.sh"%(indx),'w')
+        f=open("job_%6d.sh"%(indx),'w')
         f.write("cd %s\n"%(self._cwd))
         f.write("cd .. \n")
         for i in range(len(varList)):
