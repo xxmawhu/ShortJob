@@ -25,7 +25,7 @@ class MkMulJob:
             for i in self._cppList:
                 logName.append(i.split('.')[0])
 
-        f=open("job_%6d.sh"%(indx),'w')
+        f = open("job_%d.sh" % (indx), 'w')
         f.write("cd %s\n"%(self._cwd))
         f.write("cd .. \n")
         for i in range(len(varList)):
