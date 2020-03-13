@@ -19,24 +19,15 @@ class MkMulJob(object):
         self._cwd = os.getcwd()
 
     def Make(self, indx, varList=[], logName=[]):
-<<<<<<< HEAD
-        if len(logName) != len( self._cppList) and len(logName)>0:
-=======
         if len(logName) != len(self._cppList) and len(logName) > 0:
->>>>>>> bd2a9fb9bfb93aff72c2a72cc001acb8466ec1d0
             print("check the length")
             return
         if len(logName) == 0:
             for i in self._cppList:
                 logName.append(i.split('.')[0])
 
-<<<<<<< HEAD
-        f=open("job_%d.sh"%(indx),'w')
-        f.write("cd %s\n"%(self._cwd))
-=======
         f = open("job_%d.sh" % (indx), 'w')
         f.write("cd %s\n" % (self._cwd))
->>>>>>> bd2a9fb9bfb93aff72c2a72cc001acb8466ec1d0
         f.write("cd .. \n")
         for i in range(len(varList)):
             f.write(
@@ -46,18 +37,11 @@ class MkMulJob(object):
 
     def GetCommands(self, index, cpp, var=[], logName="txt"):
         commands = " "
-<<<<<<< HEAD
         commands += "root -l -b -q '%s"%(cpp)
         if len(var)==0: 
             commands +=\
                 ">%s/log%d.%s;\n"%(self._cwd.split("/")[-1],index,\
                 logName)
-=======
-        commands += "root -l -b -q '%s" % (cpp)
-        if var:
-            commands += ">>%s/log%d.%s;\n" % (self._cwd.split("/")[-1],
-                                              index, logName)
->>>>>>> bd2a9fb9bfb93aff72c2a72cc001acb8466ec1d0
             return commands
         s = "("
         jj = 0
@@ -72,14 +56,9 @@ class MkMulJob(object):
             else:
                 s += ","
         commands += s
-<<<<<<< HEAD
         commands +=\
                 ">%s/log%d.%s;\n"%(self._cwd.split("/")[-1],index,\
                 logName)
-=======
-        commands += ">>%s/log%d.%s;\n" % (self._cwd.split("/")[-1], index,
-                                          logName)
->>>>>>> bd2a9fb9bfb93aff72c2a72cc001acb8466ec1d0
         return commands
 
     def Str(self, s):
