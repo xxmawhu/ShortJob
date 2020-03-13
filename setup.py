@@ -13,6 +13,7 @@
 
 from setuptools import setup
 from setuptools import find_packages
+<<<<<<< HEAD
 import core
 import subprocess
 import sys
@@ -26,3 +27,12 @@ setup(
     'Source': 'https://github.com/xxmawhu/ShortJob',
 	}
 )
+=======
+setup(name='ShortJob',
+      version='1.2',
+      author='Xin-Xin Ma',
+      packages=find_packages(),
+      project_urls={
+          'Source': 'https://github.com/xxmawhu/ShortJob',
+      })
+>>>>>>> bd2a9fb9bfb93aff72c2a72cc001acb8466ec1d0

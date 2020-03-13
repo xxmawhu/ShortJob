@@ -1,3 +1,4 @@
-# this package aim at make boss analysis job 
-import MkJob,MkMulJob
-
+# this package aim at make boss analysis job
+# Usage
+from ShortJob import MkJob
+from ShortJob import MkMulJob
