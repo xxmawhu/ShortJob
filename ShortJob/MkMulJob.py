@@ -18,9 +18,6 @@ class MkMulJob:
         self._cwd = os.getcwd()
 
     def Make(self, indx, varList=[], logName=[]):
-        if indx>1e6:
-            print "too large"
-            return
         if len(logName) != len( self._cppList) and len(logName)>0:
             print("check the length")
             return 
@@ -41,7 +38,7 @@ class MkMulJob:
         commands += "root -l -b -q '%s"%(cpp)
         if len(var)==0: 
             commands +=\
-                ">>%s/log%04d.%s;\n"%(self._cwd.split("/")[-1],index,\
+                ">%s/log%d.%s;\n"%(self._cwd.split("/")[-1],index,\
                 logName)
             return commands
         s = "("
@@ -60,7 +57,7 @@ class MkMulJob:
                 s += ","
         commands += s
         commands +=\
-                ">>%s/log%04d.%s;\n"%(self._cwd.split("/")[-1],index,\
+                ">%s/log%d.%s;\n"%(self._cwd.split("/")[-1],index,\
                 logName)
         return commands
     def Str(self,s):
