@@ -19,7 +19,7 @@ import sys
 import os
 setup(
     name='ShortJob',
-    version='1.0',
+    version='1.1',
     author='Xin-Xin Ma',
     packages=find_packages(),
     project_urls={
