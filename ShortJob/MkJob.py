@@ -14,15 +14,10 @@ import os
 
 from ShortJob import MkMulJob
 
-
-class MkJob(MkMulJob):
+class MkJob(MkMulJob.MkMulJob):
     def __init__(self, cpp="fit.cxx"):
-        super(MkJob, self).__init__()
-        self._cpp = cpp
+        MkMulJob.MkMulJob.__init__(self, [cpp])
         self._cwd = os.getcwd()
-
-    def SetTarget(self, cpp):
-        self._cpp = cpp
 
     def Make(self, index, var=[]):
         tail = self._cpp.split('.')[0]
