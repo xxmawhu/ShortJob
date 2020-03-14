@@ -22,5 +22,7 @@ exe = {
     "cpp":"root -l -b -q",
     "c++":"root -l -b -q",
     "py":"python",
+    "sh":"bash",
+    "csh":"tcsh",
 }
 rootType = ["cxx", "C", "cc", "c++", "c"]
