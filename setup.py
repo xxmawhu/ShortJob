@@ -16,7 +16,7 @@ from setuptools import find_packages
 import sys
 import os
 setup(name='ShortJob',
-      version='1.2',
+      version='1.3',
       author='Xin-Xin Ma',
       packages=find_packages(),
       project_urls={

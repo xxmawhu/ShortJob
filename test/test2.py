@@ -11,8 +11,8 @@ for f in fileList:
     if f.endswith(".C"):
         scriptList.append(f)
 
-mk = MkMulJob.MkMulJob(["run.C"])
+mk = MkMulJob.MkMulJob(["run.C", "test.py"])
 for i, f in enumerate(scriptList):
     input_value = [f[:-2]]
     print input_value
-    mk.Make(i, [input_value])
+    mk.Make(i, [[3.14,2.3, "a"], ['a', 'b', 'c']])

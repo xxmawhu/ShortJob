@@ -11,7 +11,7 @@
 #
 # ====================================================
 import os
-
+from ShortJob import command
 
 class MkMulJob(object):
     def __init__(self, cppList=["fit.cxx"]):
@@ -30,36 +30,44 @@ class MkMulJob(object):
         f.write("cd %s\n" % (self._cwd))
         f.write("cd .. \n")
         for i in range(len(varList)):
-            f.write(
-                self.GetCommands(indx, self._cppList[i], varList[i],
-                                 logName[i]))
+            f.write(self.GetCommands(indx, self._cppList[i], varList[i],
+                                     logName[i])+"\n")
         f.close()
 
     def GetCommands(self, index, cpp, var=[], logName="txt"):
-        commands = " "
-        commands += "root -l -b -q '%s"%(cpp)
-        if len(var)==0: 
-            commands +=\
-                ">%s/log%d.%s;\n"%(self._cwd.split("/")[-1],index,\
-                logName)
-            return commands
-        s = "("
-        jj = 0
-        for i in var:
-            if isinstance(i, str):
-                s += '"%s"' % (self.Str(i))
+        fileType = cpp.split('.')[-1]
+        log = "log" + str(index) + "." + logName
+        if fileType in command.rootType and fileType != "":
+            if len(var) == 0: 
+                commands = "{exe} {file} > {jobpath}/{Log}".format(
+                           exe = command.exe[fileType],
+                           file = cpp,
+                           jobpath = self._cwd.split("/")[-1],
+                           Log = log)
+                return commands
             else:
-                s += str(i)
-            jj += 1
-            if jj == len(var):
-                s += ")'"
-            else:
-                s += ","
-        commands += s
-        commands +=\
-                ">%s/log%d.%s;\n"%(self._cwd.split("/")[-1],index,\
-                logName)
+                commands = "{exe} '{file}({Var})' > {jobpath}/{Log}".format(exe = command.exe[fileType],
+                           file = cpp,
+                           jobpath = self._cwd.split("/")[-1],
+                           Log = log,
+                           Var = ",".join(self._getVarList(var)))
+                return commands
+        commands = "{exe} {file} {Var} > {jobpath}/{Log}".format(exe = command.exe[fileType],
+                           file = cpp,
+                           jobpath = self._cwd.split("/")[-1],
+                           Log = log,
+                           Var = " ".join(var)
+                            )
         return commands
+
+    def _getVarList(self, varList):
+        vList = []
+        for i in varList:
+            if isinstance(i, int) or isinstance(i, float):
+                vList.append(str(i))
+            else:
+                vList.append('"{}"'.format(i))
+        return vList
 
     def Str(self, s):
         return s
