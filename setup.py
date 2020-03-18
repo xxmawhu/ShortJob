@@ -15,10 +15,20 @@ from setuptools import setup
 from setuptools import find_packages
 import sys
 import os
-setup(name='ShortJob',
-      version='1.3',
+m_version = "1.6"
+disrip=open("README.md").read()
+if sys.argv[1] == "publish":
+    os.system("python setup.py sdist")
+    os.system("python setup.py bdist_wheel")
+    os.system("twine upload dist/*{}*".format(m_version))
+else:
+    setup(name='ShortJob',
+      version=m_version,
       author='Xin-Xin Ma',
       packages=find_packages(),
+      description="Multitask Multilanguage",
       project_urls={
           'Source': 'https://github.com/xxmawhu/ShortJob',
-      })
+      },
+      long_description=disrip
+      )
