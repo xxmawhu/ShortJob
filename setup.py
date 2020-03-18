@@ -20,7 +20,7 @@ disrip=open("README.md").read()
 if sys.argv[1] == "publish":
     os.system("python setup.py sdist")
     os.system("python setup.py bdist_wheel")
-    os.system("twine upload dist/*{}*".format(m_version))
+    os.system("twine upload dist/*{}* --skip-existing".format(m_version))
 else:
     setup(name='ShortJob',
       version=m_version,
@@ -30,5 +30,4 @@ else:
       project_urls={
           'Source': 'https://github.com/xxmawhu/ShortJob',
       },
-      long_description=disrip
       )
