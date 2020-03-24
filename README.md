@@ -37,13 +37,13 @@ or
 ./test.py
 ```
 
-After running this python file, you will get a bash file named `job_000001.sh`
+After running this python file, you will get a bash script named `job_1.sh`
 the content is
 ```sh
 cd /abspath/to/ShortJob/test
 cd .. 
- root -l -b -q 'cut.cxx(1.1,1.2,0)'>>test/log0001.cut;
- root -l -b -q 'fit.cxx("d<1")'>>test/log0001.fit;
+root -l -b -q 'cut.cxx(1.1,1.2,0)'>>test/log0001.cut;
+root -l -b -q 'fit.cxx("d<1")'>>test/log0001.fit;
 ```
 ## More complex example
 ```py
@@ -51,20 +51,11 @@ cd ..
 import os
 from ShortJob import MkMulJob
 
-# get all files in the current directory
-fileList = os.listdir(".")
-
-# only need those file end with .C
-scriptList = []
-
-for f in fileList:
-    if f.endswith(".C"):
-        scriptList.append(f)
 
 mk = MkMulJob.MkMulJob(["run.C"])
-for i, f in enumerate(scriptList):
-    input_value = [f[:-2]]
-    mk.Make(i, [input_value])
+for i in range(100):
+    cutchisq = 2*i
+    mk.Make(i, [(cutchisq)])
 ```
 [How to submit those bash file?](https://github.com/xxmawhu/SmartHepSub)
 
