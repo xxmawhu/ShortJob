@@ -5,6 +5,7 @@ This package is consistent of four module, i.e. `command`, `MkJob`, `MkMulJob`,
 `GetResult`.
 * command Specify each fileType with one execute command, such as
 > .sh -> bash
+
 > .C -> root -l -b -q
 * MkMulJob generate a massive bash scripts with input tasks
 Example:
@@ -28,13 +29,19 @@ bash run.sh a > test/log1.run
 MkMulJob()
 ```
 generate a bash script contains only more than one task
+
 Example: the task is a list
+
 tasks = ["buy.csh", "mix.py", "cock.cxx", "sell.sh"]
+
 and the args for each task is
 [(0.1, 2, 0.3, 4), ("a", "b"), (2, "cack"), (3.2)]
+
 the recommend style is
+```python
 mkjob = MkMulJob(tasks)
 mkjob.Make(0, [(0.1, 2, 0.3, 4), ("a", "b"), (2, "cack"), (3.2)])
+```
 
 
 # ShortJob.MkJob
@@ -56,22 +63,49 @@ GetResult()
 ```
 
 Reqiure ROOT
+
 How:
     The program tries to find any pattern "name value" in the log file
+
     For example:
         alpha 0.321
+
     In this case, the "alpha" is assigned to be 0.021.
+
         beta 0.01 0.321 +/- 0.001
+
     In this case, the "beta" is assigned to be 0.321 +/- 0.001, while
     0.001 is the uncertainty
     * Warrn: the new value will overwrite the old one.
+
 Example:
+```python
     info = GetResult.("fit.log")
     fcn = info.FCN()
     tmpArgValue = info.GetVal("alpha")
+```
 
 
 # ShortJob.command
+
+
+## introduction
+```python
+introduction()
+```
+dir: default, the default execute commands associated with one special type.
+
+@key: file type, "C", "cxx", "cc", "cpp", "c++", "py", "sh", "csh"
+
+@value: the execute commands, "root -l -b -q", "bash"
+
+list: rootType
+
+You can modify the command free in the file ~/.ShortJob/command
+we define those type file belong to "ROOT"
+
+["cxx", "C", "cc", "c++", "c"]
+* in python3 the module "ConfigParser" is named as "configparser"
 
 
 ## MyConfigParser
@@ -85,8 +119,12 @@ set ConfigParser options for case sensitive.
 initConfig(execommand)
 ```
 init the ConfigParser file, the commands is stored in ~/.ShortJob/command
+
 Args:
+
    execommand(dir): take the file type as key and the command as value
+
 Returns:
+
     void
 

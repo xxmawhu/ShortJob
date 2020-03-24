@@ -15,7 +15,7 @@ from setuptools import setup
 from setuptools import find_packages
 import sys
 import os
-m_version = "1.6"
+m_version = "1.7"
 disrip=open("README.md").read()
 if sys.argv[1] == "publish":
     os.system("python setup.py sdist")

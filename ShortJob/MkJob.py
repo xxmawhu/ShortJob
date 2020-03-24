@@ -24,9 +24,11 @@ class MkJob(MkMulJob.MkMulJob):
 
     def Make(self, index, var):
         """generate a bash script contains only one task
+
         Args:
             index(int): the ID of job, the job is named as job_{index}.sh
             var(tuple or list): the in put args for the task
+
         Returns
             void
         """

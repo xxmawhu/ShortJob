@@ -15,27 +15,6 @@
 import os
 import ConfigParser
 
-"""
-dir: default, the default execute commands associated with one special type.
-@key: file type, "C", "cxx", "cc", "cpp", "c++", "py", "sh", "csh"
-@value: the execute commands, "root -l -b -q", "bash"
-list: rootType
-You can modify the command free in the file ~/.ShortJob/command
-we define those type file belong to "ROOT"
-["cxx", "C", "cc", "c++", "c"]
-* in python3 the module "ConfigParser" is named as "configparser"
-"""
-
-
-class MyConfigParser(ConfigParser.ConfigParser):
-    """set ConfigParser options for case sensitive."""
-    def __init__(self, defaults=None):
-        ConfigParser.ConfigParser.__init__(self, defaults=defaults)
-
-    def optionxform(self, optionstr):
-        return optionstr
-
-
 default = {
     "cxx": "root -l -b -q",
     "C": "root -l -b -q",
@@ -47,6 +26,35 @@ default = {
     "sh": "bash",
     "csh": "tcsh",
 }
+
+
+def introduction():
+    """dir: default, the default execute commands associated with one special type.
+
+    @key: file type, "C", "cxx", "cc", "cpp", "c++", "py", "sh", "csh"
+
+    @value: the execute commands, "root -l -b -q", "bash"
+
+    list: rootType
+
+    You can modify the command free in the file ~/.ShortJob/command
+    we define those type file belong to "ROOT"
+
+    ["cxx", "C", "cc", "c++", "c"]
+    * in python3 the module "ConfigParser" is named as "configparser"
+    """
+    pass
+
+
+class MyConfigParser(ConfigParser.ConfigParser):
+    """set ConfigParser options for case sensitive."""
+    def __init__(self, defaults=None):
+        ConfigParser.ConfigParser.__init__(self, defaults=defaults)
+
+    def optionxform(self, optionstr):
+        return optionstr
+
+
 localConfigFile = os.path.expanduser("~/.ShortJob/command")
 
 
