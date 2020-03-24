@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>command.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>command.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <h1>coding style: pep8</h1>
+<p>Copyright (C)2020 All rights reserved.</p>
+<p>Author        : Xin-Xin MA
+  Email         : xxmawhu@163.com
+  File Name     : command.py
+  Create Time   : 2020-03-14 14:50
+  Last Modified : 2020-03-14 14:50
+  Describe      :</p>
+<p>====================================================</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">ConfigParser</span>
+
+<span class="n">default</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;cxx&quot;</span><span class="p">:</span> <span class="s2">&quot;root -l -b -q&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="s2">&quot;root -l -b -q&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="s2">&quot;root -l -b -q&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cc&quot;</span><span class="p">:</span> <span class="s2">&quot;root -l -b -q&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cpp&quot;</span><span class="p">:</span> <span class="s2">&quot;root -l -b -q&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;c++&quot;</span><span class="p">:</span> <span class="s2">&quot;root -l -b -q&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;py&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sh&quot;</span><span class="p">:</span> <span class="s2">&quot;bash&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;csh&quot;</span><span class="p">:</span> <span class="s2">&quot;tcsh&quot;</span><span class="p">,</span>
+<span class="p">}</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>dir: default, the default execute commands associated with one special type.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">introduction</span><span class="p">():</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>@key: file type, &ldquo;C&rdquo;, &ldquo;cxx&rdquo;, &ldquo;cc&rdquo;, &ldquo;cpp&rdquo;, &ldquo;c++&rdquo;, &ldquo;py&rdquo;, &ldquo;sh&rdquo;, &ldquo;csh&rdquo;</p>
+<p>@value: the execute commands, &ldquo;root -l -b -q&rdquo;, &ldquo;bash&rdquo;</p>
+<p>list: rootType</p>
+<p>You can modify the command free in the file ~/.ShortJob/command
+we define those type file belong to &ldquo;ROOT&rdquo;</p>
+<p>[&ldquo;cxx&rdquo;, &ldquo;C&rdquo;, &ldquo;cc&rdquo;, &ldquo;c++&rdquo;, &ldquo;c&rdquo;]
+* in python3 the module &ldquo;ConfigParser&rdquo; is named as &ldquo;configparser&rdquo;</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">pass</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>set ConfigParser options for case sensitive.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">MyConfigParser</span><span class="p">(</span><span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="n">defaults</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">optionxform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">optionstr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">optionstr</span>
+
+
+<span class="n">localConfigFile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/.ShortJob/command&quot;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>init the ConfigParser file, the commands is stored in ~/.ShortJob/command</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">initConfig</span><span class="p">(</span><span class="n">execommand</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>Args:
+   execommand(dir): take the file type as key and the command as value
+Returns:
+    void</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">local_config</span> <span class="o">=</span> <span class="n">MyConfigParser</span><span class="p">()</span>
+    <span class="n">local_config</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s1">&#39;command&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">execommand</span><span class="p">:</span>
+        <span class="n">local_config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;command&#39;</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">execommand</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/.ShortJob&quot;</span><span class="p">)):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/.ShortJob&quot;</span><span class="p">))</span>
+    <span class="n">localFile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">localConfigFile</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">localFile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">configFile</span><span class="p">:</span>
+        <span class="n">local_config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">configFile</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">configfile</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">configfile</span><span class="p">):</span>
+        <span class="n">initConfig</span><span class="p">(</span><span class="n">default</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">ReadConfig</span><span class="p">(</span><span class="n">configfile</span><span class="p">):</span>
+    <span class="n">init</span><span class="p">(</span><span class="n">configfile</span><span class="p">)</span>
+    <span class="n">local_config</span> <span class="o">=</span> <span class="n">MyConfigParser</span><span class="p">()</span>
+    <span class="n">local_config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">configfile</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">local_config</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s2">&quot;command&quot;</span><span class="p">):</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">d</span>
+
+
+<span class="n">exe</span> <span class="o">=</span> <span class="n">ReadConfig</span><span class="p">(</span><span class="n">localConfigFile</span><span class="p">)</span>
+<span class="n">rootType</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cxx&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;cc&quot;</span><span class="p">,</span> <span class="s2">&quot;c++&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">exe</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> --&gt; </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">exe</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

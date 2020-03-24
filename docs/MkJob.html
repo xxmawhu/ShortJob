@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>MkJob.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>MkJob.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <h6>############################################## &lt;span id=&rdquo;copyright-(c)2019-all-rights-reserved.</h6>
+<p>&ndash;author--------:-xin-xin-ma
+&ndash;email---------:-xxmawhu@163.com
+&ndash;file-name-----:-mkjob.py
+&ndash;created-time&ndash;:-2019-10-30-18:28
+&ndash;last-modified-:-2019-10-30-18:28
+&ndash;describe------:&rdquo; href=&rdquo;copyright-(c)2019-all-rights-reserved.</p>
+<p>&ndash;author--------:-xin-xin-ma
+&ndash;email---------:-xxmawhu@163.com
+&ndash;file-name-----:-mkjob.py
+&ndash;created-time&ndash;:-2019-10-30-18:28
+&ndash;last-modified-:-2019-10-30-18:28
+&ndash;describe------:&rdquo;&gt;
+  Copyright (C)2019 All rights reserved.</p>
+<p>Author        : Xin-Xin MA
+  Email         : xxmawhu@163.com
+  File Name     : MkJob.py
+  Created Time  : 2019-10-30 18:28
+  Last Modified : 2019-10-30 18:28
+  Describe      :</p>
+<p></span></p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">ShortJob</span> <span class="kn">import</span> <span class="n">MkMulJob</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Make job with only one task, inherited from MkMulJob</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">MkJob</span><span class="p">(</span><span class="n">MkMulJob</span><span class="o">.</span><span class="n">MkMulJob</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cpp</span><span class="o">=</span><span class="s2">&quot;fit.cxx&quot;</span><span class="p">):</span>
+        <span class="n">MkMulJob</span><span class="o">.</span><span class="n">MkMulJob</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="n">cpp</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>generate a bash script contains only one task</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">Make</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Args:
+    index(int): the ID of job, the job is named as job_{index}.sh
+    var(tuple or list): the in put args for the task</p>
+<p>Returns
+    void</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="n">tail</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cpp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">logName</span> <span class="o">=</span> <span class="s2">&quot;log_</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">tail</span><span class="p">)</span>
+        <span class="n">MkMulJob</span><span class="o">.</span><span class="n">Make</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="p">[</span><span class="n">var</span><span class="p">],</span> <span class="p">[</span><span class="n">logName</span><span class="p">])</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

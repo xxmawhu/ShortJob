@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>MkMulJob.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>MkMulJob.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <h6>############################################## &lt;span id=&rdquo;copyright-(c)2019-all-rights-reserved.</h6>
+<p>&ndash;author--------:-xin-xin-ma
+&ndash;email---------:-xxmawhu@163.com
+&ndash;file-name-----:-mkmuljob.py
+&ndash;created-time&ndash;:-2019-10-30-18:29
+&ndash;last-modified-:-2019-12-30-20:16
+&ndash;describe------:&rdquo; href=&rdquo;copyright-(c)2019-all-rights-reserved.</p>
+<p>&ndash;author--------:-xin-xin-ma
+&ndash;email---------:-xxmawhu@163.com
+&ndash;file-name-----:-mkmuljob.py
+&ndash;created-time&ndash;:-2019-10-30-18:29
+&ndash;last-modified-:-2019-12-30-20:16
+&ndash;describe------:&rdquo;&gt;
+  Copyright (C)2019 All rights reserved.</p>
+<p>Author        : Xin-Xin MA
+  Email         : xxmawhu@163.com
+  File Name     : MkMulJob.py
+  Created Time  : 2019-10-30 18:29
+  Last Modified : 2019-12-30 20:16
+  Describe      :</p>
+<p></span></p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">ShortJob</span> <span class="kn">import</span> <span class="n">command</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>generate a bash script contains only more than one task</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">MkMulJob</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>Example: the task is a list
+tasks = [&ldquo;buy.csh&rdquo;, &ldquo;mix.py&rdquo;, &ldquo;cock.cxx&rdquo;, &ldquo;sell.sh&rdquo;]
+and the args for each task is
+[(0.1, 2, 0.3, 4), (&ldquo;a&rdquo;, &ldquo;b&rdquo;), (2, &ldquo;cack&rdquo;), (3.2)]
+the recommend style is
+mkjob = MkMulJob(tasks)
+mkjob.Make(0, [(0.1, 2, 0.3, 4), (&ldquo;a&rdquo;, &ldquo;b&rdquo;), (2, &ldquo;cack&rdquo;), (3.2)])</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cppList</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fit.cxx&quot;</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cppList</span> <span class="o">=</span> <span class="n">cppList</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>generate a bash script contains only one task</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">Make</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">varList</span><span class="o">=</span><span class="p">[],</span> <span class="n">logName</span><span class="o">=</span><span class="p">[]):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Args:
+    index(int): the ID of job, the job is named as job_{index}.sh
+    varList(tuple or list): each element is refered as an input args
+    for one task
+    logName(list): give each log a special name
+Returns
+    void</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">logName</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cppList</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">logName</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;check the length&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">logName</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cppList</span><span class="p">:</span>
+                <span class="n">logName</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;job_</span><span class="si">%d</span><span class="s2">.sh&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;cd </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cwd</span><span class="p">))</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;cd .. </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">varList</span><span class="p">)):</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_GetCommands</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cppList</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">varList</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                  <span class="n">logName</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">_GetCommands</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">cpp</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="p">[],</span> <span class="n">logName</span><span class="o">=</span><span class="s2">&quot;txt&quot;</span><span class="p">):</span>
+        <span class="n">fileType</span> <span class="o">=</span> <span class="n">cpp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">log</span> <span class="o">=</span> <span class="s2">&quot;log&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">logName</span>
+        <span class="k">if</span> <span class="n">fileType</span> <span class="ow">in</span> <span class="n">command</span><span class="o">.</span><span class="n">rootType</span> <span class="ow">and</span> <span class="n">fileType</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">commands</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{exe}</span><span class="s2"> </span><span class="si">{file}</span><span class="s2"> &gt; </span><span class="si">{jobpath}</span><span class="s2">/</span><span class="si">{Log}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">exe</span><span class="o">=</span><span class="n">command</span><span class="o">.</span><span class="n">exe</span><span class="p">[</span><span class="n">fileType</span><span class="p">],</span>
+                    <span class="n">file</span><span class="o">=</span><span class="n">cpp</span><span class="p">,</span>
+                    <span class="n">jobpath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cwd</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">Log</span><span class="o">=</span><span class="n">log</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">commands</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">commands</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{exe}</span><span class="s2"> &#39;</span><span class="si">{file}</span><span class="s2">(</span><span class="si">{Var}</span><span class="s2">)&#39; &gt; </span><span class="si">{jobpath}</span><span class="s2">/</span><span class="si">{Log}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">exe</span><span class="o">=</span><span class="n">command</span><span class="o">.</span><span class="n">exe</span><span class="p">[</span><span class="n">fileType</span><span class="p">],</span>
+                    <span class="n">file</span><span class="o">=</span><span class="n">cpp</span><span class="p">,</span>
+                    <span class="n">jobpath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cwd</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="n">Log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span>
+                    <span class="n">Var</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_getVarList</span><span class="p">(</span><span class="n">var</span><span class="p">)))</span>
+                <span class="k">return</span> <span class="n">commands</span>
+        <span class="n">commands</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{exe}</span><span class="s2"> </span><span class="si">{file}</span><span class="s2"> </span><span class="si">{Var}</span><span class="s2"> &gt; </span><span class="si">{jobpath}</span><span class="s2">/</span><span class="si">{Log}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">exe</span><span class="o">=</span><span class="n">command</span><span class="o">.</span><span class="n">exe</span><span class="p">[</span><span class="n">fileType</span><span class="p">],</span>
+            <span class="n">file</span><span class="o">=</span><span class="n">cpp</span><span class="p">,</span>
+            <span class="n">jobpath</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_cwd</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">Log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span>
+            <span class="n">Var</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">commands</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">_getVarList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">varList</span><span class="p">):</span>
+        <span class="n">vList</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">varList</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+                <span class="n">vList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">vList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">vList</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
